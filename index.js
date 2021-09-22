@@ -1,6 +1,7 @@
 const express = require('express')
 require('dotenv').config() //Carregar as variáveis de ambiente
 const InicializaMongoServer = require('./config/db')
+const rotasCategoria = require('./routes/Categoria')
 
 InicializaMongoServer() // Inicializamos o MongoDB
 
@@ -16,6 +17,8 @@ app.get('/', (req, res) => {
         versao: '1.0.0'
     })
 })
+//Rotas do nosso app
+app.use('/categorias',rotasCategoria)
 
 //Rota para tratar erros 404 (deve ser sempre a última rota)
 app.use(function(req,res){
