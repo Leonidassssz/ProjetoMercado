@@ -1,0 +1,39 @@
+// Teste da API REST - Categorias
+
+@baseURL = http://localhost:4000
+@id = 614a73f8d38206c4f104473d
+
+###
+// GET - Listar todas as categorias
+GET {{baseURL}}/categorias
+Content-Type: application/json
+
+###
+// GET - Listar a categoria pelo id
+GET {{baseURL}}/categorias/{{id}}
+Content-Type: application/json
+
+####
+// DELETE - Apaga uma categoria pelo id
+DELETE {{baseURL}}/categorias/{{id}}
+Content-Type: application/json
+
+###
+// POST - Incluir uma nova categoria
+POST {{baseURL}}/categorias
+Content-Type: application/json
+
+{
+   "nome": "Churrascarias",
+   "status": "inativo" 
+}
+
+###
+// PUT - Altera uma categoria
+PUT {{baseURL}}/categorias
+Content-Type: application/json
+
+{ "_id": "614a73f1d38206c4f104473b",
+   "nome": "Hamburguerias Veganas",
+   "status": "ativo" 
+}
