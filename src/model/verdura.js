@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const verduraSchema = mongoose.Schema({
+const VerduraSchema = mongoose.Schema({
     nome: {type: String},
     tipo: {type: String},
     local:{type: String},
@@ -8,4 +8,4 @@ const verduraSchema = mongoose.Schema({
     status: {type: String, enum:['ativo','inativo'], default: 'ativo'}
 },{timestamps:true})
 
-module.exports = mongoose.model('verdura', verduraSchema)
+module.exports = mongoose.model('Verdura', VerduraSchema)

@@ -2,51 +2,51 @@ const express = require('express')
 const router = express.Router()
 const { check, validationResult } = require('express-validator')
 
-const verdura = require('../model/verdura')
-const validaverdura = [
-    check("nome","Nome da verdura é obrigatória!").not().isEmpty(),
-    check("status","Informe um status válido para a verdura").isIn(['ativo','inativo']),
-    check("tipo", "Informe o tipo da verdura!").not().isEmpty(),
-    check("local", "Informe o local onde está a verdura!").not().isEmpty(),
-    check("quantidade", "Informe quantos há dessa verdura no estoque!").not().isEmpty()
+const Verdura = require('../model/Verdura')
+const validaVerdura = [
+    check("nome","Nome da Verdura é obrigatória!").not().isEmpty(),
+    check("status","Informe um status válido para a Verdura").isIn(['ativo','inativo']),
+    check("tipo", "Informe o tipo da Verdura!").not().isEmpty(),
+    check("local", "Informe o local onde está a Verdura!").not().isEmpty(),
+    check("quantidade", "Informe quantos há dessa Verdura no estoque!").not().isEmpty()
 ]
 
 /****************************
- * Listar todas as verdura
- * GET /verdura
+ * Listar todas as Verdura
+ * GET /Verdura
  * *************************/
 router.get('/', async(req, res) => {
     try{
-      const verdura = await verdura.find()
-      res.json(verdura)
+      const Verdura = await Verdura.find()
+      res.json(Verdura)
     } catch (err){
       res.status(500).send({
-          errors: [{message: 'Não foi possível obter as verdura'}]
+          errors: [{message: 'Não foi possível obter as Verdura'}]
       })
     }
 })
 
 /*************************************
- * Listar uma única verdura pelo ID
- * GET /verduras/:id
+ * Listar uma única Verdura pelo ID
+ * GET /Verduras/:id
  * ***********************************/
 router.get('/:id', async(req, res) => {
     try {
-        const verdura = await verdura.find({"_id" : req.params.id})
-        res.json(verdura)
+        const Verdura = await Verdura.find({"_id" : req.params.id})
+        res.json(Verdura)
     }catch (err){
         res.status(400).send({
-            errors: [{message: `Não foi possível obter a verdura com o id ${req.params.id}`}]
+            errors: [{message: `Não foi possível obter a Verdura com o id ${req.params.id}`}]
         })
     }
 })
 
 
 /****************************
- * Inclui uma nova verdura
- * POST / verdura
+ * Inclui uma nova Verdura
+ * POST / Verdura
  * *************************/
-router.post('/', validaverdura, async(req, res)=> {
+router.post('/', validaVerdura, async(req, res)=> {
     const errors = validationResult(req)
     if(!errors.isEmpty()){
         return res.status(400).json({
@@ -54,36 +54,36 @@ router.post('/', validaverdura, async(req, res)=> {
         })
     }
     try{
-        let verdura = new verdura(req.body)
-        await verdura.save()
-        res.send(verdura)
+        let Verdura = new Verdura(req.body)
+        await Verdura.save()
+        res.send(Verdura)
     }catch (err){
        return res.status(400).json({
-           errors: [{message: `Erro ao salvar a verdura: ${err.message}`}]
+           errors: [{message: `Erro ao salvar a Verdura: ${err.message}`}]
        })
     }
 })
 
 /****************************
- * Apaga uma verdura pelo id
- * DELETE /verdura
+ * Apaga uma Verdura pelo id
+ * DELETE /Verdura
  * *************************/
 router.delete('/:id', async(req, res) => {
-    await verdura.findByIdAndRemove(req.params.id)
-    .then(verdura => {
-        res.send({message: `verdura ${verdura.nome} removida com sucesso`})
+    await Verdura.findByIdAndRemove(req.params.id)
+    .then(Verdura => {
+        res.send({message: `Verdura ${Verdura.nome} removida com sucesso`})
     }).catch(err => {
         return res.status(400).send({
-            errors: [{message: 'Não foi possível excluir a verdura'}]
+            errors: [{message: 'Não foi possível excluir a Verdura'}]
         })
     })
 })
 
 /************************************
- * Altera uma verdura já existente
- * PUT /verduras
+ * Altera uma Verdura já existente
+ * PUT /Verduras
  * **********************************/
-router.put('/', validaverdura, async(req, res) => {
+router.put('/', validaVerdura, async(req, res) => {
     const errors = validationResult(req)
     if(!errors.isEmpty()){
         return res.status(400).json({
@@ -91,12 +91,12 @@ router.put('/', validaverdura, async(req, res) => {
         })
     }
     let dados = req.body
-    await verdura.findByIdAndUpdate(req.body._id, {$set: dados})
-    .then(verdura => {
-        res.send({ message: `verdura ${verdura.nome} alterada com sucesso`})
+    await Verdura.findByIdAndUpdate(req.body._id, {$set: dados})
+    .then(Verdura => {
+        res.send({ message: `Verdura ${Verdura.nome} alterada com sucesso`})
     }).catch(err => {
         return res.status(400).send({
-            errors: [{message: 'Não foi possível alterar a verdura informada'}]
+            errors: [{message: 'Não foi possível alterar a Verdura informada'}]
         })
     })
 })

@@ -1,39 +1,45 @@
-// Teste da API REST - verdura
+// Teste da API REST - verduras
 
-@baseURL = https://mercado-gti.herokuapp.com
+@baseURL = http://localhost:4000
 @id = 614a73f8d38206c4f104473d
 
 ###
-// GET - Listar todas as verdura
-GET {{baseURL}}/verdura
+// GET - Listar todas as verduras
+GET {{baseURL}}/Verdura
 Content-Type: application/json
 
 ###
-// GET - Listar a verdura pelo id
-GET {{baseURL}}/verdura/{{id}}
+// GET - Listar a verduras pelo id
+GET {{baseURL}}/Verdura/{{id}}
 Content-Type: application/json
 
 ####
-// DELETE - Apaga uma verdura pelo id
-DELETE {{baseURL}}/verdura/{{id}}
+// DELETE - Apaga uma verduras pelo id
+DELETE {{baseURL}}/Verdura/{{id}}
 Content-Type: application/json
 
 ###
-// POST - Incluir uma nova verdura
-POST {{baseURL}}/verdura
+// POST - Incluir uma nova verduras
+POST {{baseURL}}/Verdura
 Content-Type: application/json
 
 {
    "nome": "Limão",
+   "tipo": "Caipira",
+   "local": "Hortifruti",
+   "quantidade": "200",
    "status": "ativo" 
 }
 
 ###
-// PUT - Altera uma verdura
-PUT {{baseURL}}/verdura
+// PUT - Altera uma verduras
+PUT {{baseURL}}/Verdura
 Content-Type: application/json
 
 { "_id": "615a008db48da8d0e4923760",
    "nome": "Limão",
-   "status": "ativo" ,
+   "tipo": "Caipira",
+   "local": "Hortifruti",
+   "quantidade": "200",
+   "status": "ativo" 
 }
