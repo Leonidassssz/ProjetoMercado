@@ -5,7 +5,7 @@
 
 ###
 // GET - Listar todas as verduras
-GET {{baseURL}}/Verdura
+GET {{baseURL}}/verdura
 Content-Type: application/json
 
 ###
@@ -20,14 +20,14 @@ Content-Type: application/json
 
 ###
 // POST - Incluir uma nova verduras
-POST {{baseURL}}/Verdura
+POST {{baseURL}}/verdura
 Content-Type: application/json
 
 {
-   "nome": "Limão",
-   "tipo": "Caipira",
-   "local": "Hortifruti",
-   "quantidade": "200",
+   "nome": "Quiabo",
+   "tipo": "Amarelinho",
+   "local": "Mercado Sâo Vicente",
+   "quantidade": "61",
    "status": "ativo" 
 }
 
@@ -36,10 +36,10 @@ Content-Type: application/json
 PUT {{baseURL}}/Verdura
 Content-Type: application/json
 
-{ "_id": "615a008db48da8d0e4923760",
-   "nome": "Limão",
-   "tipo": "Caipira",
-   "local": "Hortifruti",
-   "quantidade": "200",
+{ "_id": "615ba44b153578951aebbf6a",
+   "nome": "Abôbora",
+   "tipo": "Moranga",
+   "local": "Mercadinho da Esquina",
+   "quantidade": "34",
    "status": "ativo" 
 }

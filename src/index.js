@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
     })
 })
 //Rotas do nosso app
-app.use('/Verdura', rotasVerdura)
+app.use('/verdura', rotasVerdura)
 
 //Rota para tratar erros 404 (deve ser sempre a última rota)
 app.use(function(req,res){
